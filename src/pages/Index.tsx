@@ -250,7 +250,7 @@ const Index = () => {
                       return (
                         <Badge
                           key={interest}
-                          className={`${colors[index % colors.length]} text-white border-0 px-4 py-2 font-semibold shadow-lg hover:scale-105 transition-all`}
+                          className={`${colors[index % colors.length]} text-white border-0 px-4 py-2 font-semibold shadow-lg`}
                         >
                           {interest}
                         </Badge>
