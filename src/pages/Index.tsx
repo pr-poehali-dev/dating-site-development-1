@@ -230,7 +230,7 @@ const Index = () => {
                 )}
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h2 className="text-4xl font-bold mb-2">
+                  <h2 className="font-bold mb-2 text-left text-4xl text-zinc-50">
                     {currentProfile.name}, {currentProfile.age}
                   </h2>
                   <div className="flex items-center gap-2 mb-3">
