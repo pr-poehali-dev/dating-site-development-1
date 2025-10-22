@@ -230,7 +230,7 @@ const Index = () => {
                 )}
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white px-[15px] py-0 bg-orange-50" style={{ textShadow: '3px 3px 6px rgba(0,0,0,1), -2px -2px 4px rgba(0,0,0,1), 2px -2px 4px rgba(0,0,0,1), -2px 2px 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.8)' }}>
-                  <h2 className="font-bold mb-2 text-left text-zinc-50 py-0 text-base">
+                  <h2 className="font-bold mb-2 text-zinc-50 py-0 text-2xl text-left">
                     {currentProfile.name}, {currentProfile.age}
                   </h2>
                   <div className="flex items-center gap-2 mb-3">
