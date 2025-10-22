@@ -742,17 +742,17 @@ const Index = () => {
                     <div>
                       <p className="text-sm font-medium text-blue-900 mb-2">Переведите на карту</p>
                       <div className="flex items-center gap-2 bg-white px-3 py-2 rounded border border-blue-300">
-                        <span className="font-mono font-bold text-lg">2202 2063 4321 8765</span>
+                        <span className="font-mono font-bold text-lg">2200 2480 6856 7774</span>
                         <Button 
                           size="sm" 
                           variant="ghost" 
                           className="h-6 w-6 p-0 hover:bg-blue-100"
-                          onClick={() => copyToClipboard('2202206343218765', 'Номер карты')}
+                          onClick={() => copyToClipboard('2200248068567774', 'Номер карты')}
                         >
                           <Icon name="Copy" size={16} />
                         </Button>
                       </div>
-                      <p className="text-xs text-blue-700 mt-2">Владелец: Иван И.</p>
+                      <p className="text-xs text-blue-700 mt-2">Владелец: Николай Алексеевич Р.</p>
                     </div>
                   </div>
                 </div>
