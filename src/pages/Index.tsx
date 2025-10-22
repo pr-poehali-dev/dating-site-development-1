@@ -76,6 +76,7 @@ const Index = () => {
   const [language, setLanguage] = useState('RU');
   const [isVipDialogOpen, setIsVipDialogOpen] = useState(false);
   const [selectedTariff, setSelectedTariff] = useState<string | null>(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
 
   const currentProfile = mockProfiles[currentProfileIndex];
 
@@ -616,13 +617,54 @@ const Index = () => {
               </div>
             </div>
 
+            {selectedTariff && (
+              <div className="space-y-3 pt-4 border-t flex-shrink-0">
+                <h4 className="font-semibold text-sm text-muted-foreground">Способ оплаты</h4>
+                <div className="grid grid-cols-3 gap-2">
+                  <Card
+                    onClick={() => setSelectedPaymentMethod('card')}
+                    className={`p-3 cursor-pointer hover:shadow-md transition-all text-center ${
+                      selectedPaymentMethod === 'card'
+                        ? 'border-2 border-dating-pink bg-dating-pink/5'
+                        : 'border hover:border-dating-pink/50'
+                    }`}
+                  >
+                    <Icon name="CreditCard" size={24} className="mx-auto mb-1 text-dating-pink" />
+                    <p className="text-xs font-medium">Карта</p>
+                  </Card>
+                  <Card
+                    onClick={() => setSelectedPaymentMethod('sbp')}
+                    className={`p-3 cursor-pointer hover:shadow-md transition-all text-center ${
+                      selectedPaymentMethod === 'sbp'
+                        ? 'border-2 border-dating-purple bg-dating-purple/5'
+                        : 'border hover:border-dating-purple/50'
+                    }`}
+                  >
+                    <Icon name="Smartphone" size={24} className="mx-auto mb-1 text-dating-purple" />
+                    <p className="text-xs font-medium">СБП</p>
+                  </Card>
+                  <Card
+                    onClick={() => setSelectedPaymentMethod('yoomoney')}
+                    className={`p-3 cursor-pointer hover:shadow-md transition-all text-center ${
+                      selectedPaymentMethod === 'yoomoney'
+                        ? 'border-2 border-dating-orange bg-dating-orange/5'
+                        : 'border hover:border-dating-orange/50'
+                    }`}
+                  >
+                    <Icon name="Wallet" size={24} className="mx-auto mb-1 text-dating-orange" />
+                    <p className="text-xs font-medium">ЮMoney</p>
+                  </Card>
+                </div>
+              </div>
+            )}
+
             <div className="space-y-3 pt-4 border-t flex-shrink-0">
               <Button 
-                disabled={!selectedTariff}
+                disabled={!selectedTariff || !selectedPaymentMethod}
                 className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Icon name="Crown" className="mr-2" size={20} />
-                {selectedTariff ? 'Оформить VIP' : 'Выберите тариф'}
+                {!selectedTariff ? 'Выберите тариф' : !selectedPaymentMethod ? 'Выберите способ оплаты' : 'Оплатить'}
               </Button>
 
               <Button
