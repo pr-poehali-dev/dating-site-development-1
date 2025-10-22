@@ -770,9 +770,11 @@ const Index = () => {
                     <div className="flex-1">
                       <p className="text-sm font-medium text-purple-900 mb-3">Оплата через СБП</p>
                       <div className="bg-white p-4 rounded border border-purple-300 mb-3">
-                        <div className="w-32 h-32 mx-auto bg-gray-200 rounded flex items-center justify-center">
-                          <Icon name="QrCode" size={64} className="text-gray-400" />
-                        </div>
+                        <img 
+                          src="https://cdn.poehali.dev/files/d2770bf7-fbc9-435c-86a2-9da6c1de629a.jpg" 
+                          alt="QR код для СБП"
+                          className="w-64 h-64 mx-auto"
+                        />
                       </div>
                       <p className="text-xs text-purple-700">Отсканируйте QR-код в приложении банка</p>
                     </div>
