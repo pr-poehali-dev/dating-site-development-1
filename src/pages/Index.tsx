@@ -229,7 +229,7 @@ const Index = () => {
                   </Badge>
                 )}
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.9), 1px -1px 2px rgba(0,0,0,0.9), -1px 1px 2px rgba(0,0,0,0.9)' }}>
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white" style={{ textShadow: '3px 3px 6px rgba(0,0,0,1), -2px -2px 4px rgba(0,0,0,1), 2px -2px 4px rgba(0,0,0,1), -2px 2px 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.8)' }}>
                   <h2 className="font-bold mb-2 text-left text-4xl text-zinc-50">
                     {currentProfile.name}, {currentProfile.age}
                   </h2>
