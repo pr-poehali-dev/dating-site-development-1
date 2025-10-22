@@ -220,7 +220,7 @@ const Index = () => {
                   alt={currentProfile.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
                 
                 {currentProfile.online && (
                   <Badge className="absolute top-4 right-4 bg-green-500 text-white border-0 shadow-lg animate-fade-in">
@@ -229,7 +229,7 @@ const Index = () => {
                   </Badge>
                 )}
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.9), 1px -1px 2px rgba(0,0,0,0.9), -1px 1px 2px rgba(0,0,0,0.9)' }}>
                   <h2 className="font-bold mb-2 text-left text-4xl text-zinc-50">
                     {currentProfile.name}, {currentProfile.age}
                   </h2>
