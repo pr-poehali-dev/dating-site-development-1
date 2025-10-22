@@ -75,6 +75,7 @@ const Index = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [language, setLanguage] = useState('RU');
   const [isVipDialogOpen, setIsVipDialogOpen] = useState(false);
+  const [selectedTariff, setSelectedTariff] = useState<string | null>(null);
 
   const currentProfile = mockProfiles[currentProfileIndex];
 
@@ -510,19 +511,39 @@ const Index = () => {
 
             <ScrollArea className="max-h-[400px] pr-4">
               <div className="space-y-3">
-                <Card className="p-4 border-2 border-dating-pink/50 hover:border-dating-pink bg-gradient-to-r from-white to-gray-50 cursor-pointer hover:shadow-lg transition-all">
+                <Card 
+                  onClick={() => setSelectedTariff('1month')}
+                  className={`p-4 border-2 cursor-pointer hover:shadow-lg transition-all ${
+                    selectedTariff === '1month' 
+                      ? 'border-dating-pink bg-dating-pink/10 shadow-lg' 
+                      : 'border-dating-pink/50 hover:border-dating-pink bg-gradient-to-r from-white to-gray-50'
+                  }`}>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-bold">1 месяц</h4>
+                    {selectedTariff === '1month' && (
+                      <Icon name="CheckCircle2" size={20} className="text-dating-pink" />
+                    )}
                   </div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-bold text-dating-pink">499₽</span>
                   </div>
                 </Card>
 
-                <Card className="p-4 border-2 border-dating-purple bg-gradient-to-r from-dating-purple/5 to-dating-pink/5 cursor-pointer hover:shadow-lg transition-all">
+                <Card 
+                  onClick={() => setSelectedTariff('3months')}
+                  className={`p-4 border-2 cursor-pointer hover:shadow-lg transition-all ${
+                    selectedTariff === '3months' 
+                      ? 'border-dating-purple bg-dating-purple/10 shadow-lg' 
+                      : 'border-dating-purple/50 hover:border-dating-purple bg-gradient-to-r from-dating-purple/5 to-dating-pink/5'
+                  }`}>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-bold">3 месяца</h4>
-                    <Badge className="bg-dating-purple text-white border-0">Выгодно</Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-dating-purple text-white border-0">Выгодно</Badge>
+                      {selectedTariff === '3months' && (
+                        <Icon name="CheckCircle2" size={20} className="text-dating-purple" />
+                      )}
+                    </div>
                   </div>
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-2xl font-bold text-dating-purple">999₽</span>
@@ -530,10 +551,21 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground">Разовый платёж • ~333₽/мес</p>
                 </Card>
 
-                <Card className="p-4 border-2 border-dating-orange bg-gradient-to-r from-dating-orange/5 to-dating-pink/5 cursor-pointer hover:shadow-lg transition-all">
+                <Card 
+                  onClick={() => setSelectedTariff('1year')}
+                  className={`p-4 border-2 cursor-pointer hover:shadow-lg transition-all ${
+                    selectedTariff === '1year' 
+                      ? 'border-dating-orange bg-dating-orange/10 shadow-lg' 
+                      : 'border-dating-orange/50 hover:border-dating-orange bg-gradient-to-r from-dating-orange/5 to-dating-pink/5'
+                  }`}>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="font-bold">1 год</h4>
-                    <Badge className="bg-dating-orange text-white border-0">-67%</Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-dating-orange text-white border-0">-67%</Badge>
+                      {selectedTariff === '1year' && (
+                        <Icon name="CheckCircle2" size={20} className="text-dating-orange" />
+                      )}
+                    </div>
                   </div>
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-2xl font-bold text-dating-orange">1999₽</span>
@@ -541,14 +573,25 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground">Разовый платёж • ~166₽/мес</p>
                 </Card>
 
-                <Card className="p-4 border-2 border-dating-pink bg-gradient-to-r from-dating-pink to-dating-purple cursor-pointer hover:shadow-2xl transition-all relative overflow-hidden">
+                <Card 
+                  onClick={() => setSelectedTariff('forever')}
+                  className={`p-4 border-2 cursor-pointer hover:shadow-2xl transition-all relative overflow-hidden ${
+                    selectedTariff === 'forever' 
+                      ? 'border-yellow-400 bg-gradient-to-r from-dating-pink to-dating-purple shadow-2xl scale-[1.02]' 
+                      : 'border-dating-pink bg-gradient-to-r from-dating-pink to-dating-purple'
+                  }`}>
                   <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-400/20 rounded-full -mr-10 -mt-10" />
                   <div className="flex items-center justify-between mb-2 relative z-10">
                     <h4 className="font-bold text-white">Навсегда</h4>
-                    <Badge className="bg-yellow-400 text-black border-0 font-bold">
-                      <Icon name="Sparkles" size={12} className="mr-1" />
-                      ХИТ
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-yellow-400 text-black border-0 font-bold">
+                        <Icon name="Sparkles" size={12} className="mr-1" />
+                        ХИТ
+                      </Badge>
+                      {selectedTariff === 'forever' && (
+                        <Icon name="CheckCircle2" size={20} className="text-yellow-400" />
+                      )}
+                    </div>
                   </div>
                   <div className="flex items-baseline gap-2 mb-1 relative z-10">
                     <span className="text-2xl font-bold text-white">3999₽</span>
@@ -574,9 +617,12 @@ const Index = () => {
             </ScrollArea>
 
             <div className="space-y-3 pt-4 border-t">
-              <Button className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg">
+              <Button 
+                disabled={!selectedTariff}
+                className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 <Icon name="Crown" className="mr-2" size={20} />
-                Оформить VIP
+                {selectedTariff ? 'Оформить VIP' : 'Выберите тариф'}
               </Button>
 
               <Button
