@@ -218,7 +218,7 @@ const Index = () => {
                 <img
                   src={currentProfile.image}
                   alt={currentProfile.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover my-0"
                 />
 
                 
@@ -230,14 +230,14 @@ const Index = () => {
                 )}
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white px-[15px] py-0 bg-orange-50" style={{ textShadow: '3px 3px 6px rgba(0,0,0,1), -2px -2px 4px rgba(0,0,0,1), 2px -2px 4px rgba(0,0,0,1), -2px 2px 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.8)' }}>
-                  <h2 className="font-bold mb-2 text-left text-4xl text-zinc-50">
+                  <h2 className="font-bold mb-2 text-left text-zinc-50 py-0 text-base">
                     {currentProfile.name}, {currentProfile.age}
                   </h2>
                   <div className="flex items-center gap-2 mb-3">
                     <Icon name="MapPin" size={18} />
-                    <span className="text-lg">{currentProfile.location}</span>
+                    <span className="text-lg py-0">{currentProfile.location}</span>
                   </div>
-                  <p className="text-white/90 mb-4 text-lg">{currentProfile.bio}</p>
+                  <p className="text-white/90 mb-4 text-xs">{currentProfile.bio}</p>
                   <div className="flex flex-wrap gap-2">
                     {currentProfile.interests.map((interest, index) => {
                       const colors = [
