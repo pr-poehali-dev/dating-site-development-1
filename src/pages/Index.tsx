@@ -508,17 +508,55 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="space-y-4">
-              <Card className="p-4 border-2 border-dating-pink bg-gradient-to-r from-dating-pink/5 to-dating-purple/5">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-bold text-lg">VIP на месяц</h4>
-                  <Badge className="bg-dating-pink text-white border-0">-20%</Badge>
-                </div>
-                <div className="flex items-baseline gap-2 mb-3">
-                  <span className="text-3xl font-bold text-dating-pink">990₽</span>
-                  <span className="text-lg text-muted-foreground line-through">1290₽</span>
-                </div>
-                <ul className="space-y-2 text-sm">
+            <ScrollArea className="max-h-[400px] pr-4">
+              <div className="space-y-3">
+                <Card className="p-4 border-2 border-dating-pink/50 hover:border-dating-pink bg-gradient-to-r from-white to-gray-50 cursor-pointer hover:shadow-lg transition-all">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-bold">1 месяц</h4>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-bold text-dating-pink">499₽</span>
+                  </div>
+                </Card>
+
+                <Card className="p-4 border-2 border-dating-purple bg-gradient-to-r from-dating-purple/5 to-dating-pink/5 cursor-pointer hover:shadow-lg transition-all">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-bold">3 месяца</h4>
+                    <Badge className="bg-dating-purple text-white border-0">Выгодно</Badge>
+                  </div>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-2xl font-bold text-dating-purple">999₽</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">333₽ в месяц</p>
+                </Card>
+
+                <Card className="p-4 border-2 border-dating-orange bg-gradient-to-r from-dating-orange/5 to-dating-pink/5 cursor-pointer hover:shadow-lg transition-all">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-bold">1 год</h4>
+                    <Badge className="bg-dating-orange text-white border-0">-67%</Badge>
+                  </div>
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="text-2xl font-bold text-dating-orange">1999₽</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">166₽ в месяц</p>
+                </Card>
+
+                <Card className="p-4 border-2 border-dating-pink bg-gradient-to-r from-dating-pink to-dating-purple cursor-pointer hover:shadow-2xl transition-all relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-400/20 rounded-full -mr-10 -mt-10" />
+                  <div className="flex items-center justify-between mb-2 relative z-10">
+                    <h4 className="font-bold text-white">Навсегда</h4>
+                    <Badge className="bg-yellow-400 text-black border-0 font-bold">
+                      <Icon name="Sparkles" size={12} className="mr-1" />
+                      ХИТ
+                    </Badge>
+                  </div>
+                  <div className="flex items-baseline gap-2 mb-1 relative z-10">
+                    <span className="text-2xl font-bold text-white">3999₽</span>
+                  </div>
+                  <p className="text-xs text-white/90 relative z-10">Разовый платёж</p>
+                </Card>
+
+                <ul className="space-y-2 text-sm pt-3 border-t">
                   <li className="flex items-center gap-2">
                     <Icon name="Check" size={16} className="text-dating-pink" />
                     <span>Неограниченные сообщения</span>
@@ -532,8 +570,10 @@ const Index = () => {
                     <span>Без рекламы</span>
                   </li>
                 </ul>
-              </Card>
+              </div>
+            </ScrollArea>
 
+            <div className="space-y-3 pt-4 border-t">
               <Button className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg">
                 <Icon name="Crown" className="mr-2" size={20} />
                 Оформить VIP
