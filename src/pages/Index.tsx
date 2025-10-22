@@ -527,7 +527,7 @@ const Index = () => {
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-2xl font-bold text-dating-purple">999₽</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">333₽ в месяц</p>
+                  <p className="text-xs text-muted-foreground">Разовый платёж • ~333₽/мес</p>
                 </Card>
 
                 <Card className="p-4 border-2 border-dating-orange bg-gradient-to-r from-dating-orange/5 to-dating-pink/5 cursor-pointer hover:shadow-lg transition-all">
@@ -538,7 +538,7 @@ const Index = () => {
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-2xl font-bold text-dating-orange">1999₽</span>
                   </div>
-                  <p className="text-xs text-muted-foreground">166₽ в месяц</p>
+                  <p className="text-xs text-muted-foreground">Разовый платёж • ~166₽/мес</p>
                 </Card>
 
                 <Card className="p-4 border-2 border-dating-pink bg-gradient-to-r from-dating-pink to-dating-purple cursor-pointer hover:shadow-2xl transition-all relative overflow-hidden">
@@ -553,7 +553,7 @@ const Index = () => {
                   <div className="flex items-baseline gap-2 mb-1 relative z-10">
                     <span className="text-2xl font-bold text-white">3999₽</span>
                   </div>
-                  <p className="text-xs text-white/90 relative z-10">Разовый платёж</p>
+                  <p className="text-xs text-white/90 relative z-10">Один раз и навсегда</p>
                 </Card>
 
                 <ul className="space-y-2 text-sm pt-3 border-t">
