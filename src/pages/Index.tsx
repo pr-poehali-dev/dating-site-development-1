@@ -230,7 +230,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   onClick={handleLike}
-                  className="w-20 h-20 rounded-full backdrop-blur-md bg-white/30 text-red-500 border-0 hover:shadow-2xl hover:scale-110 hover:bg-white/40 transition-all"
+                  className="w-20 h-20 rounded-full backdrop-blur-md bg-white/30 text-red-500 border-0 hover:shadow-2xl hover:scale-110 hover:bg-white/40 transition-all animate-pulse"
                 >
                   <Icon name="Heart" size={36} className="fill-red-500" />
                 </Button>
