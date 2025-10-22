@@ -77,6 +77,7 @@ const Index = () => {
   const [isVipDialogOpen, setIsVipDialogOpen] = useState(false);
   const [selectedTariff, setSelectedTariff] = useState<string | null>(null);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
+  const [isPaymentDetailsOpen, setIsPaymentDetailsOpen] = useState(false);
 
   const currentProfile = mockProfiles[currentProfileIndex];
 
@@ -99,6 +100,30 @@ const Index = () => {
     } else {
       setCurrentProfileIndex(0);
     }
+  };
+
+  const getTariffDetails = () => {
+    const tariffs = {
+      '1month': { name: '1 месяц', price: 499 },
+      '3months': { name: '3 месяца', price: 999 },
+      '1year': { name: '1 год', price: 1999 },
+      'forever': { name: 'Навсегда', price: 3999 },
+    };
+    return selectedTariff ? tariffs[selectedTariff as keyof typeof tariffs] : null;
+  };
+
+  const getPaymentMethodName = () => {
+    const methods = {
+      'card': 'Номер карты',
+      'sbp': 'СБП',
+      'yoomoney': 'ЮMoney',
+    };
+    return selectedPaymentMethod ? methods[selectedPaymentMethod as keyof typeof methods] : '';
+  };
+
+  const handlePayment = () => {
+    setIsVipDialogOpen(false);
+    setIsPaymentDetailsOpen(true);
   };
 
   const sendMessage = () => {
@@ -661,6 +686,7 @@ const Index = () => {
             <div className="space-y-3 pt-4 border-t flex-shrink-0">
               <Button 
                 disabled={!selectedTariff || !selectedPaymentMethod}
+                onClick={handlePayment}
                 className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Icon name="Crown" className="mr-2" size={20} />
@@ -675,6 +701,114 @@ const Index = () => {
                 Может позже
               </Button>
             </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isPaymentDetailsOpen} onOpenChange={setIsPaymentDetailsOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-dating-pink to-dating-orange bg-clip-text text-transparent">
+              Детали оплаты
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            <Card className="p-4 bg-gradient-to-r from-dating-pink/5 to-dating-purple/5 border-dating-pink/20">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm text-muted-foreground">Тариф</span>
+                <span className="font-bold">{getTariffDetails()?.name}</span>
+              </div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm text-muted-foreground">Способ оплаты</span>
+                <span className="font-bold">{getPaymentMethodName()}</span>
+              </div>
+              <div className="flex items-center justify-between pt-3 border-t">
+                <span className="font-bold">Итого к оплате</span>
+                <span className="text-2xl font-bold text-dating-pink">{getTariffDetails()?.price}₽</span>
+              </div>
+            </Card>
+
+            {selectedPaymentMethod === 'card' && (
+              <div className="space-y-4">
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Info" size={20} className="text-blue-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-blue-900 mb-2">Переведите на карту</p>
+                      <div className="flex items-center gap-2 bg-white px-3 py-2 rounded border border-blue-300">
+                        <span className="font-mono font-bold text-lg">2202 2063 4321 8765</span>
+                        <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
+                          <Icon name="Copy" size={16} />
+                        </Button>
+                      </div>
+                      <p className="text-xs text-blue-700 mt-2">Владелец: Иван И.</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground text-center">
+                  После оплаты VIP активируется автоматически в течение 5 минут
+                </p>
+              </div>
+            )}
+
+            {selectedPaymentMethod === 'sbp' && (
+              <div className="space-y-4">
+                <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Smartphone" size={20} className="text-purple-600 mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-purple-900 mb-3">Оплата через СБП</p>
+                      <div className="bg-white p-4 rounded border border-purple-300 mb-3">
+                        <div className="w-32 h-32 mx-auto bg-gray-200 rounded flex items-center justify-center">
+                          <Icon name="QrCode" size={64} className="text-gray-400" />
+                        </div>
+                      </div>
+                      <p className="text-xs text-purple-700">Отсканируйте QR-код в приложении банка</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground text-center">
+                  После оплаты VIP активируется автоматически
+                </p>
+              </div>
+            )}
+
+            {selectedPaymentMethod === 'yoomoney' && (
+              <div className="space-y-4">
+                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <div className="flex items-start gap-3">
+                    <Icon name="Wallet" size={20} className="text-orange-600 mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-orange-900 mb-2">Переведите на кошелёк</p>
+                      <div className="flex items-center gap-2 bg-white px-3 py-2 rounded border border-orange-300">
+                        <span className="font-mono font-bold">410012345678901</span>
+                        <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
+                          <Icon name="Copy" size={16} />
+                        </Button>
+                      </div>
+                      <Button className="w-full mt-3 bg-orange-600 hover:bg-orange-700 text-white">
+                        Открыть ЮMoney
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground text-center">
+                  После оплаты VIP активируется в течение 5 минут
+                </p>
+              </div>
+            )}
+
+            <Button
+              variant="outline"
+              onClick={() => {
+                setIsPaymentDetailsOpen(false);
+                setIsVipDialogOpen(true);
+              }}
+              className="w-full"
+            >
+              <Icon name="ArrowLeft" className="mr-2" size={18} />
+              Назад к выбору
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
