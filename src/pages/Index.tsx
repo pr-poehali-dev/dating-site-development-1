@@ -126,6 +126,12 @@ const Index = () => {
     setIsPaymentDetailsOpen(true);
   };
 
+  const copyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert(`${label} скопирован!`);
+    });
+  };
+
   const sendMessage = () => {
     if (!selectedMatch || !messageInput.trim()) return;
 
@@ -737,7 +743,12 @@ const Index = () => {
                       <p className="text-sm font-medium text-blue-900 mb-2">Переведите на карту</p>
                       <div className="flex items-center gap-2 bg-white px-3 py-2 rounded border border-blue-300">
                         <span className="font-mono font-bold text-lg">2202 2063 4321 8765</span>
-                        <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
+                        <Button 
+                          size="sm" 
+                          variant="ghost" 
+                          className="h-6 w-6 p-0 hover:bg-blue-100"
+                          onClick={() => copyToClipboard('2202206343218765', 'Номер карты')}
+                        >
                           <Icon name="Copy" size={16} />
                         </Button>
                       </div>
@@ -782,7 +793,12 @@ const Index = () => {
                       <p className="text-sm font-medium text-orange-900 mb-2">Переведите на кошелёк</p>
                       <div className="flex items-center gap-2 bg-white px-3 py-2 rounded border border-orange-300">
                         <span className="font-mono font-bold">410012345678901</span>
-                        <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
+                        <Button 
+                          size="sm" 
+                          variant="ghost" 
+                          className="h-6 w-6 p-0 hover:bg-orange-100"
+                          onClick={() => copyToClipboard('410012345678901', 'Номер кошелька')}
+                        >
                           <Icon name="Copy" size={16} />
                         </Button>
                       </div>
