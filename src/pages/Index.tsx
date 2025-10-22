@@ -239,15 +239,23 @@ const Index = () => {
                   </div>
                   <p className="text-white/90 mb-4 text-lg">{currentProfile.bio}</p>
                   <div className="flex flex-wrap gap-2">
-                    {currentProfile.interests.map((interest) => (
-                      <Badge
-                        key={interest}
-                        variant="secondary"
-                        className="bg-white/20 backdrop-blur-sm text-white border-0 hover:bg-white/30 transition-all"
-                      >
-                        {interest}
-                      </Badge>
-                    ))}
+                    {currentProfile.interests.map((interest, index) => {
+                      const colors = [
+                        'bg-gradient-to-r from-red-500 to-pink-500',
+                        'bg-gradient-to-r from-yellow-400 to-orange-500',
+                        'bg-gradient-to-r from-purple-500 to-indigo-500',
+                        'bg-gradient-to-r from-green-500 to-teal-500',
+                        'bg-gradient-to-r from-blue-500 to-cyan-500',
+                      ];
+                      return (
+                        <Badge
+                          key={interest}
+                          className={`${colors[index % colors.length]} text-white border-0 px-4 py-2 font-semibold shadow-lg hover:scale-105 transition-all`}
+                        >
+                          {interest}
+                        </Badge>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
