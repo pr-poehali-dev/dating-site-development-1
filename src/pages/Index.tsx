@@ -491,14 +491,14 @@ const Index = () => {
       </Dialog>
 
       <Dialog open={isVipDialogOpen} onOpenChange={setIsVipDialogOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md max-h-[90vh] flex flex-col">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-dating-pink to-dating-orange bg-clip-text text-transparent flex items-center gap-2">
               <Icon name="Crown" size={28} className="text-dating-orange" />
               Подписка VIP
             </DialogTitle>
           </DialogHeader>
-          <div className="space-y-6">
+          <div className="space-y-6 overflow-y-auto flex-1">
             <div className="text-center py-6">
               <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-dating-pink to-dating-orange rounded-full flex items-center justify-center">
                 <Icon name="Lock" size={48} className="text-white" />
@@ -509,7 +509,7 @@ const Index = () => {
               </p>
             </div>
 
-            <ScrollArea className="max-h-[400px] pr-4">
+            <div className="pr-2">
               <div className="space-y-3">
                 <Card 
                   onClick={() => setSelectedTariff('1month')}
@@ -614,9 +614,9 @@ const Index = () => {
                   </li>
                 </ul>
               </div>
-            </ScrollArea>
+            </div>
 
-            <div className="space-y-3 pt-4 border-t">
+            <div className="space-y-3 pt-4 border-t flex-shrink-0">
               <Button 
                 disabled={!selectedTariff}
                 className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
