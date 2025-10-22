@@ -74,6 +74,7 @@ const Index = () => {
   const [messageInput, setMessageInput] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [language, setLanguage] = useState('RU');
+  const [isVipDialogOpen, setIsVipDialogOpen] = useState(false);
 
   const currentProfile = mockProfiles[currentProfileIndex];
 
@@ -237,9 +238,10 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-16 h-16 rounded-full border-2 border-dating-orange text-dating-orange hover:bg-dating-orange hover:text-white hover:scale-110 transition-all shadow-lg"
+                  onClick={() => setIsVipDialogOpen(true)}
+                  className="w-16 h-16 rounded-full border-2 border-dating-purple text-dating-purple hover:bg-dating-purple hover:text-white hover:scale-110 transition-all shadow-lg"
                 >
-                  <Icon name="Star" size={28} />
+                  <Icon name="MessageCircle" size={28} />
                 </Button>
               </div>
             </Card>
@@ -483,6 +485,68 @@ const Index = () => {
             <Button className="w-full bg-gradient-to-r from-dating-pink to-dating-purple text-white border-0 hover:shadow-lg transition-all">
               Сохранить изменения
             </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isVipDialogOpen} onOpenChange={setIsVipDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-dating-pink to-dating-orange bg-clip-text text-transparent flex items-center gap-2">
+              <Icon name="Crown" size={28} className="text-dating-orange" />
+              Подписка VIP
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            <div className="text-center py-6">
+              <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-dating-pink to-dating-orange rounded-full flex items-center justify-center">
+                <Icon name="Lock" size={48} className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Чтобы писать сообщения</h3>
+              <p className="text-muted-foreground mb-6">
+                Оформите VIP-подписку и получите неограниченный доступ к чату
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <Card className="p-4 border-2 border-dating-pink bg-gradient-to-r from-dating-pink/5 to-dating-purple/5">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="font-bold text-lg">VIP на месяц</h4>
+                  <Badge className="bg-dating-pink text-white border-0">-20%</Badge>
+                </div>
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="text-3xl font-bold text-dating-pink">990₽</span>
+                  <span className="text-lg text-muted-foreground line-through">1290₽</span>
+                </div>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" size={16} className="text-dating-pink" />
+                    <span>Неограниченные сообщения</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" size={16} className="text-dating-pink" />
+                    <span>Просмотр лайков</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Icon name="Check" size={16} className="text-dating-pink" />
+                    <span>Без рекламы</span>
+                  </li>
+                </ul>
+              </Card>
+
+              <Button className="w-full bg-gradient-to-r from-dating-pink to-dating-orange text-white border-0 hover:shadow-xl transition-all py-6 text-lg">
+                <Icon name="Crown" className="mr-2" size={20} />
+                Оформить VIP
+              </Button>
+
+              <Button
+                variant="ghost"
+                onClick={() => setIsVipDialogOpen(false)}
+                className="w-full text-muted-foreground hover:text-foreground"
+              >
+                Может позже
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
